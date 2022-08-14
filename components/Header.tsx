@@ -1,6 +1,7 @@
 import { BellIcon, SearchIcon, UserCircleIcon, UserIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 
 function Header() {
@@ -21,6 +22,8 @@ function Header() {
         window.removeEventListener("scroll", handleScroll)
       }
     }, [])
+
+    const {logout} = useAuth()
     
 
     return (
@@ -49,7 +52,7 @@ function Header() {
                 <p className="hidden lg:inline">Kids</p>
                 <BellIcon className="h-6 w-6" />
                 <Link href="/account">
-                    <UserIcon className="h-8 w-8" />
+                    <UserIcon onClick={logout} className="h-8 w-8" />
                 </Link>
 
             </div>
